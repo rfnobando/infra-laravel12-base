@@ -1,0 +1,2 @@
+infra/docker/dev/.env
+infra/docker/prod/.env

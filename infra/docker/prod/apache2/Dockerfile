@@ -2,7 +2,7 @@
 FROM php:8.4-fpm AS build
 
 # Copy project for build
-COPY ./app /var/www/app
+COPY app /var/www/app
 WORKDIR /var/www/app
 
 # Install necessary build tools and dependencies

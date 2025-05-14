@@ -2,19 +2,21 @@ services:
   apache2:
     build:
       context: ../../..
-      dockerfile: ./infra/docker/prod/apache2/Dockerfile
+      dockerfile: infra/docker/prod/apache2/Dockerfile
     ports:
       - "80:80"
+    restart: unless-stopped
     depends_on:
       - db
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: ${DB_MYSQL_ROOT_PASSWORD}
     volumes:
       - laravel_db_data:/var/lib/mysql
     ports:
       - "3306:3306"
+    restart: unless-stopped
 volumes:
   laravel_db_data:
     driver: local
